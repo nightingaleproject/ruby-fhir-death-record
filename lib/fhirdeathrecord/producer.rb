@@ -8,7 +8,7 @@ module FhirDeathRecord::Producer
     # Catagorize values by their LOINC codes (this helps us convert Nightingale's internal
     # death record structure to something that more directly maps to the FHIR death
     # record model)
-    death_record_loinc = FhirDeathRecord::Utils.to_loinc(death_record.stringify_keys['contents'])
+    death_record_loinc = FhirDeathRecord::Utils.to_loinc(death_record.stringify_keys['contents']) if death_record.is_a?(Hash)
 
     # Create a new bundle
     record_id = death_record['id']
