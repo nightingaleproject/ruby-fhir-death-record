@@ -8,7 +8,7 @@ See spec fixtures for an example of the internal data representation that this m
 
 Include ruby-fhir-death-record in your Gemfile:
 ```
-gem 'cqm-converter', git: 'https://github.com/nightingaleproject/ruby-fhir-death-record.git'
+gem 'ruby-fhir-death-record', git: 'https://github.com/nightingaleproject/ruby-fhir-death-record.git'
 ```
 
 Then run `bundle install`.
