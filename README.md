@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nightingaleproject/ruby-fhir-death-record.svg?branch=master)](https://travis-ci.org/nightingaleproject/ruby-fhir-death-record)
+
 # ruby-fhir-death-record
 
 This repository includes a Ruby Gem that provides a module for producing and consuming the preliminary version of the Standard Death Record (SDR) Health Level 7 (HL7) Fast Healthcare Interoperability Resources (FHIR). [Click here to view the generated FHIR IG](https://nightingaleproject.github.io/fhir-death-record).
