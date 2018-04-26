@@ -17,9 +17,11 @@ Then run `bundle install`.
 
 ## Usage
 
-### Producing
+### Producing Example
 
 ```
+require 'fhirdeathrecord'
+
 # Create FHIR models from XML
 fhir_resource = FHIR::Xml.from_xml(...)
 
@@ -27,10 +29,19 @@ fhir_resource = FHIR::Xml.from_xml(...)
 death_record = FhirDeathRecord::Consumer.from_fhir(fhir_resource)
 ```
 
-### Consuming
+### Consuming Example
 
 ```
+require 'fhirdeathrecord'
+
+# Convert internal representation to SDR FHIR
 fhir_resource = FhirDeathRecord::Poducer.to_fhir(death_record)
+
+# Print XML
+puts fhir_resource.to_xml
+
+# Print JSON
+puts fhir_resource.to_json
 ```
 
 ## Rake tasks
