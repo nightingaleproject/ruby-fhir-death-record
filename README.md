@@ -30,7 +30,7 @@ death_record = FhirDeathRecord::Consumer.from_fhir(fhir_resource)
 ### Consuming
 
 ```
-fhir_resource = FhirProducerHelper.to_fhir(death_record)
+fhir_resource = FhirDeathRecord::Poducer.to_fhir(death_record)
 ```
 
 ## Rake tasks
