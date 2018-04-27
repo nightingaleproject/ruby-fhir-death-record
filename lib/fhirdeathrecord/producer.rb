@@ -426,6 +426,11 @@ module FhirDeathRecord::Producer
     # Set clinicalStatus
     condition.clinicalStatus = 'active'
 
+    # Set profile
+    condition.meta = {
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-CauseOfDeathCondition'
+    }
+
     # Package condition into entry and return
     entry = FHIR::Bundle::Entry.new
     resource_id = SecureRandom.uuid

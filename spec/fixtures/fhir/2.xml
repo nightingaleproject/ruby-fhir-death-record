@@ -252,6 +252,9 @@
     <fullUrl value="urn:uuid:bc6059ad-e95f-44ce-8a8e-9e421478b622"/>
     <resource>
       <Condition>
+        <meta>
+          <profile value="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-CauseOfDeathCondition"/>
+        </meta>
         <text>
           <status value="additional"/>
           <div xmlns="http://www.w3.org/1999/xhtml">Example Immediate COD</div>
@@ -268,6 +271,9 @@
     <fullUrl value="urn:uuid:a9084019-e7c7-4fba-9237-122b9b116e1e"/>
     <resource>
       <Condition>
+        <meta>
+          <profile value="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-CauseOfDeathCondition"/>
+        </meta>
         <text>
           <status value="additional"/>
           <div xmlns="http://www.w3.org/1999/xhtml">Example Underlying COD 1</div>
@@ -284,6 +290,9 @@
     <fullUrl value="urn:uuid:55541243-512c-41a1-98c6-a743d6f7f692"/>
     <resource>
       <Condition>
+        <meta>
+          <profile value="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-CauseOfDeathCondition"/>
+        </meta>
         <text>
           <status value="additional"/>
           <div xmlns="http://www.w3.org/1999/xhtml">Example Underlying COD 2</div>
