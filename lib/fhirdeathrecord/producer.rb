@@ -31,6 +31,20 @@ module FhirDeathRecord::Producer
       }
     )
 
+    # Set profile
+    composition.meta = {
+      'profile' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-DeathRecordContents'
+    }
+
+    # Set the composition status
+    composition.status = 'final'
+
+    # Set the composition date
+    composition.date = Date.today.to_s
+
+    # Set the composition title
+    composition.title = 'Record of Death'
+
     # Create a section for the composition
     section = FHIR::Composition::Section.new
 
@@ -45,12 +59,12 @@ module FhirDeathRecord::Producer
 
     # Create and add the decedent (Patient)
     subject = FhirDeathRecord::Producer.death_decedent(death_record)
-    composition.subject = subject.fullUrl
+    composition.subject = { 'reference' => subject.fullUrl }
     fhir_record.entry << subject
 
     # Create and add the certifier (Practitioner)
     author = FhirDeathRecord::Producer.death_certifier(death_record)
-    composition.author = author.fullUrl
+    composition.author = [{ 'reference' => author.fullUrl }]
     fhir_record.entry << author
 
     # Create and add the cause of death(s) (Conditions)
@@ -63,7 +77,7 @@ module FhirDeathRecord::Producer
 
     # Add the cause of death references to the compositon section
     cause_of_deaths.each do |cod|
-      section.entry << cod.fullUrl
+      section.entry << { 'reference' => cod.fullUrl }
     end
 
     # Add the cause of deaths themselves to the bundle
@@ -86,14 +100,14 @@ module FhirDeathRecord::Producer
 
     # Add the observation references to the compositon section
     observations.each do |obs|
-      section.entry << obs.fullUrl
+      section.entry << { 'reference' => obs.fullUrl }
     end
 
     # Add the observations themselves to the bundle
     fhir_record.entry.push(*observations)
 
     # Add the section to the composition
-    composition.section = section
+    composition.section = [section]
 
     # Finally, add the composition itself to the bundle and return the bundle
     fhir_record.entry.unshift(composition) # Make composition the first bundle entry
@@ -303,6 +317,13 @@ module FhirDeathRecord::Producer
 
     patient = FHIR::Patient.new(options)
 
+    patient.meta = {
+      'profile' => [
+        'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Decedent',
+        'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient'
+      ]
+    }
+
     # Package patient into entry and return
     entry = FHIR::Bundle::Entry.new
     resource_id = SecureRandom.uuid
@@ -344,18 +365,34 @@ module FhirDeathRecord::Producer
         'system' => certifier_type[:system]
       }
     ) unless certifier_type.blank?
-    practitioner.extension = extension
+    practitioner.extension = [extension]
+
+    practitioner.meta = {
+      'profile' => [
+        'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-Certifier',
+        'http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner'
+      ]
+    }
 
     # Certifier name
     name = {}
-    name['family'] = [death_record['contents']['personCompletingCauseOfDeathName.lastName']] unless death_record['contents']['personCompletingCauseOfDeathName.lastName'].blank?
+    name['family'] = death_record['contents']['personCompletingCauseOfDeathName.lastName'] unless death_record['contents']['personCompletingCauseOfDeathName.lastName'].blank?
     name['given'] = [death_record['contents']['personCompletingCauseOfDeathName.firstName']] unless death_record['contents']['personCompletingCauseOfDeathName.firstName'].blank?
     unless death_record['contents']['personCompletingCauseOfDeathName.middleName'].blank?
       name['given'] = [] unless name['given']
       name['given'] << death_record['contents']['personCompletingCauseOfDeathName.middleName']
     end
     name['suffix'] = death_record['contents']['personCompletingCauseOfDeathName.suffix'] unless death_record['contents']['personCompletingCauseOfDeathName.suffix'].blank?
-    practitioner.name = FHIR::HumanName.new(name) unless name.empty?
+    practitioner.name = [FHIR::HumanName.new(name)] unless name.empty?
+
+    # Certifier identity
+    practitioner.identifier = [
+      {
+        'use' => 'official',
+        'system' => 'https://github.com/nightingaleproject/nightingale',
+        'value' => death_record['certifier_id'].to_s
+      }
+    ]
 
     # Certifier address
     address = {}
@@ -413,7 +450,7 @@ module FhirDeathRecord::Producer
     # Set cause
     narrative = FHIR::Narrative.new
     narrative.status = 'additional' # Narrative may contain additional information not found in structured data
-    narrative.div = cause
+    narrative.div = "<div xmlns='http://www.w3.org/1999/xhtml'>#{cause}</div>"
     condition.text = narrative
 
     # Set onset if it exists
