@@ -182,6 +182,7 @@ module FhirDeathRecord::Consumer
             decedent['locationOfDeath.city'] = sub_extension.valueAddress.city.strip if sub_extension.valueAddress.city.present?
             decedent['locationOfDeath.state'] = sub_extension.valueAddress.state.strip if sub_extension.valueAddress.state.present?
             decedent['locationOfDeath.zip'] = sub_extension.valueAddress.postalCode.strip if sub_extension.valueAddress.postalCode.present?
+            decedent['locationOfDeath.county'] = sub_extension.valueAddress.district.strip if sub_extension.valueAddress.district.present?
             decedent['locationOfDeath.street'] = sub_extension.valueAddress.line.first if sub_extension.valueAddress.line && sub_extension.valueAddress.line.count > 1
           when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension'
             decedent['locationOfDeath.name'] = sub_extension.valueString
