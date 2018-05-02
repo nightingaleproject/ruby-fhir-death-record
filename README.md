@@ -17,7 +17,7 @@ Then run `bundle install`.
 
 ## Usage
 
-### Producing Example
+### Consuming Example
 
 ```
 require 'fhirdeathrecord'
@@ -29,7 +29,7 @@ fhir_resource = FHIR::Xml.from_xml(...)
 death_record = FhirDeathRecord::Consumer.from_fhir(fhir_resource)
 ```
 
-### Consuming Example
+### Producing Example
 
 ```
 require 'fhirdeathrecord'
