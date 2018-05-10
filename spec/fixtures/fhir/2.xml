@@ -3,81 +3,84 @@
   <id value="2"/>
   <type value="document"/>
   <entry>
-    <Composition>
-      <meta>
-        <profile value="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-DeathRecordContents"/>
-      </meta>
-      <status value="final"/>
-      <type>
-        <coding>
-          <system value="http://loinc.org"/>
-          <code value="64297-5"/>
-          <display value="Death certificate"/>
-        </coding>
-      </type>
-      <subject>
-        <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
-      </subject>
-      <date value="2018-05-01"/>
-      <author>
-        <reference value="urn:uuid:9e93d5b6-b71a-4125-ab95-d703581637b8"/>
-      </author>
-      <title value="Record of Death"/>
-      <section>
-        <code>
+    <fullUrl value="urn:uuid:2a28f851-dddf-4d75-b8cf-29b6de357534"/>
+    <resource>
+      <Composition>
+        <meta>
+          <profile value="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-deathRecord-DeathRecordContents"/>
+        </meta>
+        <status value="final"/>
+        <type>
           <coding>
             <system value="http://loinc.org"/>
-            <code value="69453-9"/>
-            <display value="Cause of death"/>
+            <code value="64297-5"/>
+            <display value="Death certificate"/>
           </coding>
-        </code>
-        <entry>
-          <reference value="urn:uuid:331e1fce-0b88-4fef-b811-dd97be7dce28"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:f9107d83-7554-42f0-8405-691b14f1519d"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:fdfdefe0-5779-4cd5-9ede-30ce4cf81240"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:e6cae0e1-6321-453c-87ba-7575500e7fd9"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:044235ac-32f5-4b7f-a2b5-c2677ae2c265"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:91ba03d4-a42f-4513-bed4-4ee958c1b102"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:9ce73b65-be21-44ca-824f-a76117cb713a"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:e35c666e-f865-47e8-82cb-f77ddcc5de8c"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:7c391967-70c1-4b2d-8bdd-7834e56d665e"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:1de277ef-3b25-4975-b1c2-2b8998e89ba3"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:e5272983-ec3c-4e81-a4bf-3da9382550a3"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:e55fa14c-82a3-4766-9caa-ebd685ca0672"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:82fff2dd-1eac-4123-8c3f-7ba2b5482ac5"/>
-        </entry>
-        <entry>
-          <reference value="urn:uuid:63286dab-a9c8-4e92-9903-d5a0ef0714e7"/>
-        </entry>
-      </section>
-    </Composition>
+        </type>
+        <subject>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
+        </subject>
+        <date value="2018-05-10"/>
+        <author>
+          <reference value="urn:uuid:bc95a69a-20c2-4423-b100-a041831b4e15"/>
+        </author>
+        <title value="Record of Death"/>
+        <section>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="69453-9"/>
+              <display value="Cause of death"/>
+            </coding>
+          </code>
+          <entry>
+            <reference value="urn:uuid:1ca68dc6-5d36-4027-8b58-4e07237868a5"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:43aeb157-ae65-41c9-926d-0ba8e0417478"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:583fab69-308c-4c98-bde0-0aa7272f4a1c"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:b95170c9-daf4-4d6d-90b6-2f5a5841597a"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:eaa1a09f-226b-4c1e-871e-b6ab8613772a"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:8deb8812-b208-497a-8aa1-19460da5669b"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:d169677d-6723-45c2-b17b-eb2675671dc6"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:85c0b496-324a-4ad4-a769-e181b4df5259"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:f2763ed5-a61f-405e-accd-845c15ee62d5"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:c7f1ed49-9c69-4a3b-b887-4860da657ee0"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:f34e44d6-0d9b-491b-9b61-634e5aa09b36"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:eebd4df2-d514-497e-af62-990c49af87fc"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:eb1dd63e-a988-497b-9dd9-9f4a9c168d78"/>
+          </entry>
+          <entry>
+            <reference value="urn:uuid:86d28b98-8054-40d2-b103-e5d3e955d8fe"/>
+          </entry>
+        </section>
+      </Composition>
+    </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+    <fullUrl value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
     <resource>
       <Patient>
         <meta>
@@ -255,7 +258,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:9e93d5b6-b71a-4125-ab95-d703581637b8"/>
+    <fullUrl value="urn:uuid:bc95a69a-20c2-4423-b100-a041831b4e15"/>
     <resource>
       <Practitioner>
         <meta>
@@ -300,7 +303,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:331e1fce-0b88-4fef-b811-dd97be7dce28"/>
+    <fullUrl value="urn:uuid:1ca68dc6-5d36-4027-8b58-4e07237868a5"/>
     <resource>
       <Condition>
         <meta>
@@ -312,14 +315,14 @@
         </text>
         <clinicalStatus value="active"/>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <onsetString value="minutes"/>
       </Condition>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:f9107d83-7554-42f0-8405-691b14f1519d"/>
+    <fullUrl value="urn:uuid:43aeb157-ae65-41c9-926d-0ba8e0417478"/>
     <resource>
       <Condition>
         <meta>
@@ -331,14 +334,14 @@
         </text>
         <clinicalStatus value="active"/>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <onsetString value="2 hours"/>
       </Condition>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:fdfdefe0-5779-4cd5-9ede-30ce4cf81240"/>
+    <fullUrl value="urn:uuid:583fab69-308c-4c98-bde0-0aa7272f4a1c"/>
     <resource>
       <Condition>
         <meta>
@@ -350,14 +353,14 @@
         </text>
         <clinicalStatus value="active"/>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <onsetString value="6 months"/>
       </Condition>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:e6cae0e1-6321-453c-87ba-7575500e7fd9"/>
+    <fullUrl value="urn:uuid:b95170c9-daf4-4d6d-90b6-2f5a5841597a"/>
     <resource>
       <Observation>
         <meta>
@@ -372,14 +375,14 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueDateTime value="2018-04-24T00:00:00+00:00"/>
       </Observation>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:044235ac-32f5-4b7f-a2b5-c2677ae2c265"/>
+    <fullUrl value="urn:uuid:eaa1a09f-226b-4c1e-871e-b6ab8613772a"/>
     <resource>
       <Observation>
         <meta>
@@ -394,14 +397,14 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueBoolean value="false"/>
       </Observation>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:91ba03d4-a42f-4513-bed4-4ee958c1b102"/>
+    <fullUrl value="urn:uuid:8deb8812-b208-497a-8aa1-19460da5669b"/>
     <resource>
       <Observation>
         <meta>
@@ -416,14 +419,14 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueBoolean value="false"/>
       </Observation>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:9ce73b65-be21-44ca-824f-a76117cb713a"/>
+    <fullUrl value="urn:uuid:d169677d-6723-45c2-b17b-eb2675671dc6"/>
     <resource>
       <Observation>
         <meta>
@@ -438,14 +441,14 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueDateTime value="2018-04-24T00:00:00+00:00"/>
       </Observation>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:e35c666e-f865-47e8-82cb-f77ddcc5de8c"/>
+    <fullUrl value="urn:uuid:85c0b496-324a-4ad4-a769-e181b4df5259"/>
     <resource>
       <Observation>
         <meta>
@@ -460,14 +463,14 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueBoolean value="false"/>
       </Observation>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:7c391967-70c1-4b2d-8bdd-7834e56d665e"/>
+    <fullUrl value="urn:uuid:f2763ed5-a61f-405e-accd-845c15ee62d5"/>
     <resource>
       <Observation>
         <meta>
@@ -482,7 +485,7 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueCodeableConcept>
           <coding>
@@ -495,7 +498,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:1de277ef-3b25-4975-b1c2-2b8998e89ba3"/>
+    <fullUrl value="urn:uuid:c7f1ed49-9c69-4a3b-b887-4860da657ee0"/>
     <resource>
       <Observation>
         <meta>
@@ -524,7 +527,7 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <effectiveDateTime value="2018-04-19T15:43:00+00:00"/>
         <valueString value="Example details of injury"/>
@@ -532,7 +535,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:e5272983-ec3c-4e81-a4bf-3da9382550a3"/>
+    <fullUrl value="urn:uuid:f34e44d6-0d9b-491b-9b61-634e5aa09b36"/>
     <resource>
       <Observation>
         <meta>
@@ -547,7 +550,7 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueCodeableConcept>
           <coding>
@@ -560,7 +563,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:e55fa14c-82a3-4766-9caa-ebd685ca0672"/>
+    <fullUrl value="urn:uuid:eebd4df2-d514-497e-af62-990c49af87fc"/>
     <resource>
       <Observation>
         <meta>
@@ -575,14 +578,14 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueBoolean value="false"/>
       </Observation>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:82fff2dd-1eac-4123-8c3f-7ba2b5482ac5"/>
+    <fullUrl value="urn:uuid:eb1dd63e-a988-497b-9dd9-9f4a9c168d78"/>
     <resource>
       <Observation>
         <meta>
@@ -597,7 +600,7 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueCodeableConcept>
           <coding>
@@ -609,7 +612,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:63286dab-a9c8-4e92-9903-d5a0ef0714e7"/>
+    <fullUrl value="urn:uuid:86d28b98-8054-40d2-b103-e5d3e955d8fe"/>
     <resource>
       <Observation>
         <meta>
@@ -624,7 +627,7 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:da509f5a-46bf-45a6-bda3-814066cdd0fd"/>
+          <reference value="urn:uuid:1bb99300-9e8a-4686-b36b-601fb9362ff7"/>
         </subject>
         <valueCodeableConcept>
           <coding>
