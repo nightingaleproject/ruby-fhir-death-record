@@ -110,7 +110,11 @@ module FhirDeathRecord::Producer
     composition.section = [section]
 
     # Finally, add the composition itself to the bundle and return the bundle
-    fhir_record.entry.unshift(composition) # Make composition the first bundle entry
+    composition_entry = FHIR::Bundle::Entry.new
+    resource_id = SecureRandom.uuid
+    composition_entry.fullUrl = "urn:uuid:#{resource_id}"
+    composition_entry.resource = composition
+    fhir_record.entry.unshift(composition_entry) # Make composition the first bundle entry
     fhir_record
   end
 
