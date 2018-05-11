@@ -147,7 +147,6 @@
         <extension url="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Birthplace-extension">
           <valueAddress>
             <type value="postal"/>
-            <line value="Boston Massachusetts"/>
             <city value="Boston"/>
             <state value="Massachusetts"/>
             <country value="United States"/>
@@ -169,7 +168,6 @@
             <valueAddress>
               <type value="postal"/>
               <line value="5 Example St."/>
-              <line value="Boston Massachusetts 02101"/>
               <city value="Boston"/>
               <state value="Massachusetts"/>
               <postalCode value="02101"/>
@@ -202,7 +200,6 @@
             <extension url="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-PostalAddress-extension">
               <valueAddress>
                 <type value="postal"/>
-                <line value="Boston Massachusetts"/>
                 <city value="Boston"/>
                 <state value="Massachusetts"/>
                 <country value="United States"/>
@@ -505,13 +502,12 @@
           <profile value="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-DetailsOfInjury"/>
         </meta>
         <extension url="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-PlaceOfInjury-extension">
-          <valueString value="Example details of injury"/>
+          <valueString value="Restaurant"/>
         </extension>
         <extension url="http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-PostalAddress-extension">
           <valueAddress>
             <type value="postal"/>
             <line value="7 Example Street"/>
-            <line value="Bedford Massachusetts 01730"/>
             <city value="Bedford"/>
             <state value="Massachusetts"/>
             <postalCode value="01730"/>
