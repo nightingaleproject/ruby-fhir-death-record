@@ -138,7 +138,7 @@ module FhirDeathRecord::Producer
       name['given'] = [] unless name['given']
       name['given'] << death_record['contents']['decedentName.middleName']
     end
-    name['family'] = [death_record['contents']['decedentName.lastName']] unless death_record['contents']['decedentName.lastName'].blank?
+    name['family'] = death_record['contents']['decedentName.lastName'] unless death_record['contents']['decedentName.lastName'].blank?
     name['use'] = 'official'
     options['name'] = [name] unless name.empty?
     # Decedent D.O.B.
@@ -153,7 +153,7 @@ module FhirDeathRecord::Producer
     address['city'] = death_record['contents']['decedentAddress.city'] unless death_record['contents']['decedentAddress.city'].blank?
     address['state'] = death_record['contents']['decedentAddress.state'] unless death_record['contents']['decedentAddress.state'].blank?
     address['postalCode'] = death_record['contents']['decedentAddress.zip'] unless death_record['contents']['decedentAddress.zip'].blank?
-    options['address'] = address
+    options['address'] = [address] unless address.empty?
     # Decedent's gender
     options['gender'] = death_record['contents']['sex.sex'].downcase
 
@@ -407,7 +407,7 @@ module FhirDeathRecord::Producer
     address['state'] = death_record['contents']['personCompletingCauseOfDeathAddress.state'] unless death_record['contents']['personCompletingCauseOfDeathAddress.state'].blank?
     address['postalCode'] = death_record['contents']['personCompletingCauseOfDeathAddress.zip'] unless death_record['contents']['personCompletingCauseOfDeathAddress.zip'].blank?
     address['country'] = death_record['contents']['personCompletingCauseOfDeathAddress.country'] unless death_record['contents']['personCompletingCauseOfDeathAddress.country'].blank?
-    practitioner.address = FHIR::Address.new(address) unless address.empty?
+    practitioner.address = [FHIR::Address.new(address)] unless address.empty?
 
     # Qualification
     qualification = FHIR::Practitioner::Qualification.new
@@ -729,8 +729,8 @@ module FhirDeathRecord::Producer
     # Extensions
     obs.resource.extension << {
       'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-PlaceOfInjury-extension',
-      'valueString' => value
-    }
+      'valueString' => death_record['contents']['detailsOfInjuryLocation.name']
+    } if death_record['contents']['detailsOfInjuryLocation.name']
     obs.resource.extension << {
       'url' => 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/shr-core-PostalAddress-extension',
       'valueAddress' => FhirDeathRecord::Producer.build_address_extension(death_record, 'detailsOfInjuryLocation')

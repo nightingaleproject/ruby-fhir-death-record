@@ -414,6 +414,7 @@ module FhirDeathRecord::Consumer
     date_time = DateTime.parse(entry.resource.effectiveDateTime)
     observation['detailsOfInjuryDate.detailsOfInjuryDate'] = date_time.strftime('%F')
     observation['detailsOfInjuryTime.detailsOfInjuryTime'] = date_time.strftime('%H:%M')
+    observation['detailsOfInjuryLocation.name'] = entry.resource.extension.first.valueString
     observation
   end
 
