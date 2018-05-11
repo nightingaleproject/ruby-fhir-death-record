@@ -167,7 +167,7 @@ module FhirDeathRecord::Consumer
           decedent['placeOfBirth.city'] = address.city if address.city.present?
           decedent['placeOfBirth.state'] = address.state if address.state.present?
           decedent['placeOfBirth.country'] = address.country if address.country.present?
-          decedent['placeOfBirth.street'] = address.line.first if address.line && address.line.any? && address.line.count > 1
+          decedent['placeOfBirth.street'] = address.line.first if address.line && address.line.any? && address.line.count > 0
         end
       when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-ServedInArmedForces-extension'
         served = extension.valueBoolean ? 'Yes' : 'No'
@@ -183,7 +183,7 @@ module FhirDeathRecord::Consumer
             decedent['locationOfDeath.state'] = sub_extension.valueAddress.state.strip if sub_extension.valueAddress.state.present?
             decedent['locationOfDeath.zip'] = sub_extension.valueAddress.postalCode.strip if sub_extension.valueAddress.postalCode.present?
             decedent['locationOfDeath.county'] = sub_extension.valueAddress.district.strip if sub_extension.valueAddress.district.present?
-            decedent['locationOfDeath.street'] = sub_extension.valueAddress.line.first if sub_extension.valueAddress.line && sub_extension.valueAddress.line.count > 1
+            decedent['locationOfDeath.street'] = sub_extension.valueAddress.line.first if sub_extension.valueAddress.line && sub_extension.valueAddress.line.count > 0
           when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FacilityName-extension'
             decedent['locationOfDeath.name'] = sub_extension.valueString
           when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-PlaceOfDeathType-extension'
@@ -205,7 +205,7 @@ module FhirDeathRecord::Consumer
                 decedent['placeOfDisposition.state'] = sub_sub_extension.valueAddress.state.strip if sub_sub_extension.valueAddress.state.present?
                 decedent['placeOfDisposition.zip'] = sub_sub_extension.valueAddress.postalCode.strip if sub_sub_extension.valueAddress.postalCode.present?
                 decedent['placeOfDisposition.country'] = sub_sub_extension.valueAddress.country.strip if sub_sub_extension.valueAddress.country.present?
-                decedent['placeOfDisposition.street'] = sub_sub_extension.valueAddress.line.first if sub_sub_extension.valueAddress.line && sub_sub_extension.valueAddress.line.count > 1
+                decedent['placeOfDisposition.street'] = sub_sub_extension.valueAddress.line.first if sub_sub_extension.valueAddress.line && sub_sub_extension.valueAddress.line.count > 0
               end
             end
           when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-FuneralFacility-extension'
@@ -217,7 +217,7 @@ module FhirDeathRecord::Consumer
                 decedent['funeralFacility.city'] = sub_sub_extension.valueAddress.city.strip if sub_sub_extension.valueAddress.city.present?
                 decedent['funeralFacility.state'] = sub_sub_extension.valueAddress.state.strip if sub_sub_extension.valueAddress.state.present?
                 decedent['funeralFacility.zip'] = sub_sub_extension.valueAddress.postalCode.strip if sub_sub_extension.valueAddress.postalCode.present?
-                decedent['funeralFacility.street'] = sub_sub_extension.valueAddress.line.first if sub_sub_extension.valueAddress.line && sub_sub_extension.valueAddress.line.count > 1
+                decedent['funeralFacility.street'] = sub_sub_extension.valueAddress.line.first if sub_sub_extension.valueAddress.line && sub_sub_extension.valueAddress.line.count > 0
               end
             end
           end
@@ -229,7 +229,7 @@ module FhirDeathRecord::Consumer
         decedent['placeOfBirth.state'] = extension.valueAddress.state if extension.valueAddress.state.present?
         decedent['placeOfBirth.zip'] = extension.valueAddress.postalCode.strip if extension.valueAddress.postalCode.present?
         decedent['placeOfBirth.country'] = extension.valueAddress.country.strip if extension.valueAddress.country.present?
-        decedent['placeOfBirth.street'] = extension.valueAddress.line.first if extension.valueAddress.line && extension.valueAddress.line.count > 1
+        decedent['placeOfBirth.street'] = extension.valueAddress.line.first if extension.valueAddress.line && extension.valueAddress.line.count > 0
       when 'http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-decedent-Occupation-extension'
         extension.extension.each do |sub_extension|
           case sub_extension.url
@@ -279,7 +279,7 @@ module FhirDeathRecord::Consumer
       certifier['personCompletingCauseOfDeathAddress.city'] = address.city.strip if address.city.present?
       certifier['personCompletingCauseOfDeathAddress.state'] = address.state.strip if address.state.present?
       certifier['personCompletingCauseOfDeathAddress.zip'] = address.postalCode.strip if address.postalCode.present?
-      certifier['personCompletingCauseOfDeathAddress.street'] = address.line.first if address.line && address.line.count > 1
+      certifier['personCompletingCauseOfDeathAddress.street'] = address.line.first if address.line && address.line.count > 0
     end
     # Handle type
     certifier_lookup = {
@@ -410,7 +410,7 @@ module FhirDeathRecord::Consumer
     observation['detailsOfInjuryLocation.city'] = entry.resource.extension.last.valueAddress.city
     observation['detailsOfInjuryLocation.state'] = entry.resource.extension.last.valueAddress.state
     observation['detailsOfInjuryLocation.zip'] = entry.resource.extension.last.valueAddress.postalCode
-    observation['detailsOfInjuryLocation.street'] = entry.resource.extension.last.valueAddress.line.first if entry.resource.extension.last.valueAddress.line && entry.resource.extension.last.valueAddress.line.count > 1
+    observation['detailsOfInjuryLocation.street'] = entry.resource.extension.last.valueAddress.line.first if entry.resource.extension.last.valueAddress.line && entry.resource.extension.last.valueAddress.line.count > 0
     date_time = DateTime.parse(entry.resource.effectiveDateTime)
     observation['detailsOfInjuryDate.detailsOfInjuryDate'] = date_time.strftime('%F')
     observation['detailsOfInjuryTime.detailsOfInjuryTime'] = date_time.strftime('%H:%M')

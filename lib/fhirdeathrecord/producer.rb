@@ -974,10 +974,7 @@ module FhirDeathRecord::Producer
     county = death_record['contents'][death_record_key + '.county']
     line1 = death_record['contents'][death_record_key + '.street']
     line1 += ' ' + death_record['contents'][death_record_key + '.apt'] unless line1.nil? || death_record['contents'][death_record_key + '.apt'].blank?
-    line2 = "#{city} #{state} #{zip}"
-    lines = []
-    lines << line1.strip.split.join(' ') unless line1.blank?
-    lines << line2.strip.split.join(' ') unless line2.blank?
+    lines = [line1.strip.split.join(' ')] unless line1.blank?
     FHIR::Address.new({country: country, district: county, postalCode: zip, city: city, state: state, line: lines, type: 'postal'}).to_hash
   end
 
