@@ -96,7 +96,7 @@ module FhirDeathRecord::Consumer
       else
         decedent['decedentName.lastName'] = name.family
       end
-      certifier['decedentName.suffix'] = name.suffix.join(' ') if name.suffix && name.suffix.any? && !name.suffix.join(' ').blank?
+      decedent['decedentName.suffix'] = name.suffix.join(' ') if name.suffix && name.suffix.any? && !name.suffix.join(' ').blank?
     end
     # Handle date of birth
     decedent['dateOfBirth.dateOfBirth'] = patient.birthDate if patient.birthDate.present?
