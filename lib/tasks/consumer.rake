@@ -5,7 +5,10 @@ namespace :fhirdeathrecord do
     )
     task :to_nightingale do
       require 'json'
-      resource = FHIR::Xml.from_xml(File.read(ENV['RECORD']))
+      record_string = File.read(ENV['RECORD'])
+      json_record = JSON.parse(record_string) rescue nil
+      resource = FHIR::Xml.from_xml(record_string) unless json_record
+      resource = FHIR::Xml.from_json(record_string) if json_record
       contents = FhirDeathRecord::Consumer.from_fhir(resource)
       puts JSON.pretty_generate(JSON.parse(Hash[contents.sort].to_json))
     end
