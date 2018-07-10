@@ -48,12 +48,17 @@ puts fhir_resource.to_json
 
 This Ruby Gem includes a couple of useful Rake tasks for converting between SDR records in XML format to/from the Nightingale representation.
 
-From SDR FHIR XML to Nightingale format:
+From SDR FHIR XML (or JSON!) to Nightingale format (prints to stdout):
 ```
 bundle exec rake fhirdeathrecord:consumer:to_nightingale RECORD=spec/fixtures/fhir/1.xml
 ```
 
-From Nightingale format to SDR FHIR XML:
+From Nightingale format to SDR FHIR JSON (prints to stdout):
 ```
-bundle exec rake fhirdeathrecord:producer:to_fhir RECORD=spec/fixtures/internal/1.json
+bundle exec rake fhirdeathrecord:producer:to_fhir_json RECORD=spec/fixtures/internal/1.json
+```
+
+From Nightingale format to SDR FHIR XML (prints to stdout):
+```
+bundle exec rake fhirdeathrecord:producer:to_fhir_xml RECORD=spec/fixtures/internal/1.json
 ```
