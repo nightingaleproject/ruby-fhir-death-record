@@ -26,7 +26,7 @@ module FhirDeathRecord::Consumer
     (3..6).each do |c|
       entry = fhir_record.entry[c]
       # Stop checking if we've exhausted the cause of deaths
-      break unless entry.resource.text.present? && entry.resource.respond_to?('onsetString')
+      break unless !entry.nil? && !entry.resource.nil? && entry.resource.text.present? && entry.resource.respond_to?('onsetString')
       index += 1
       contents.merge! FhirDeathRecord::Consumer.cause_of_death_condition(entry, c-3)
     end
@@ -82,6 +82,7 @@ module FhirDeathRecord::Consumer
 
   # Returns decedent information in Nightingale form given a FHIR death record.
   def self.decedent(decedent_entry)
+    return {} if decedent_entry.blank?
     patient = decedent_entry.resource
     decedent = {}
     # Handle name
@@ -255,9 +256,9 @@ module FhirDeathRecord::Consumer
 
   # Returns certifier information in Nightingale form given a FHIR death record.
   def self.certifier(certifier_entry)
+    return {} if certifier_entry.blank?
     practitioner = certifier_entry.resource
     certifier = {}
-
     # Handle name
     if practitioner.name && practitioner.name.length > 0
       name = practitioner.name.first

@@ -155,7 +155,7 @@ module FhirDeathRecord::Producer
     address['postalCode'] = death_record['contents']['decedentAddress.zip'] unless death_record['contents']['decedentAddress.zip'].blank?
     options['address'] = [address] unless address.empty?
     # Decedent's gender
-    options['gender'] = death_record['contents']['sex.sex'].downcase
+    options['gender'] = death_record['contents']['sex.sex'].downcase unless death_record['contents']['sex.sex'].blank?
 
     # Decedent SSN
     options['identifier'] = {
@@ -167,19 +167,27 @@ module FhirDeathRecord::Producer
     options['extension'] = []
 
     # Decedent race
-    race_codes = death_record['contents']['race.race.specify'].gsub(/[^0-9a-z,]/i, ' ')&.split(',').map do |race|
-      {
-        'url' => 'ombCategory',
-        'valueCoding' => {
-          'code' => RACE_ETHNICITY_CODES[race.squish]
+    if death_record['contents']['race.race.specify'].blank?
+      race_codes = []
+    else
+      race_codes = death_record['contents']['race.race.specify'].gsub(/[^0-9a-z,]/i, ' ')&.split(',').map do |race|
+        {
+          'url' => 'ombCategory',
+          'valueCoding' => {
+            'code' => RACE_ETHNICITY_CODES[race.squish]
+          }
         }
-      }
+      end
     end
-    race_strings = death_record['contents']['race.race.specify'].gsub(/[^0-9a-z,]/i, ' ')&.split(',').map do |race|
-      {
-        'url' => 'text',
-        'valueString' => race.squish
-      }
+    if death_record['contents']['race.race.specify'].blank?
+      race_strings = []
+    else
+      race_strings = death_record['contents']['race.race.specify'].gsub(/[^0-9a-z,]/i, ' ')&.split(',').map do |race|
+        {
+          'url' => 'text',
+          'valueString' => race.squish
+        }
+      end
     end
     options['extension'] << {
       'url' => 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race',
