@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'ruby-fhir-death-record'
-  spec.version       = '0.1.2'
+  spec.version       = '0.1.3'
   spec.authors       = ['aholmes@mitre.org']
   spec.email         = ['aholmes@mitre.org']
 

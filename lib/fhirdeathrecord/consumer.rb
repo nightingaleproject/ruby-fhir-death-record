@@ -34,7 +34,7 @@ module FhirDeathRecord::Consumer
     # Grab observations
     (index..fhir_record.entry.count-1).each do |o|
       entry = fhir_record.entry[o]
-      case entry.resource.code.coding.first.code
+      case entry&.resource&.code&.coding&.first&.code
       when '81956-5'
         # http://nightingaleproject.github.io/fhirDeathRecord/StructureDefinition/sdr-causeOfDeath-ActualOrPresumedDateOfDeath
         contents.merge! FhirDeathRecord::Consumer.actual_or_presumed_date_of_death(entry)
@@ -140,13 +140,15 @@ module FhirDeathRecord::Consumer
         end
       when 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
         # Handle ethnicity
-        ethnicity = extension.valueCodeableConcept&.coding.first.display
-        if ethnicity == 'Hispanic or Latino'
-          decedent['hispanicOrigin.hispanicOrigin.specify'] = 'Hispanic or Latino'
-          decedent['hispanicOrigin.hispanicOrigin.option'] = 'Yes'
-        else
-          decedent['hispanicOrigin.hispanicOrigin.specify'] = ''
-          decedent['hispanicOrigin.hispanicOrigin.option'] = 'No'
+        if extension.valueCodeableConcept&.coding&.first&.display != nil
+          ethnicity = extension.valueCodeableConcept&.coding.first.display
+          if ethnicity == 'Hispanic or Latino'
+            decedent['hispanicOrigin.hispanicOrigin.specify'] = 'Hispanic or Latino'
+            decedent['hispanicOrigin.hispanicOrigin.option'] = 'Yes'
+          else
+            decedent['hispanicOrigin.hispanicOrigin.specify'] = ''
+            decedent['hispanicOrigin.hispanicOrigin.option'] = 'No'
+          end
         end
       when 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
         # Handle sex
