@@ -22,17 +22,16 @@ module FhirDeathRecord::Consumer
     contents.merge! FhirDeathRecord::Consumer.certifier(fhir_record.entry[2])
 
     # Grab potential conditions
-    index = 3
-    (3..6).each do |c|
+    index = 0
+    (3..fhir_record.entry.count-1).each do |c|
       entry = fhir_record.entry[c]
-      # Stop checking if we've exhausted the cause of deaths
-      break unless !entry.nil? && !entry.resource.nil? && entry.resource.text.present? && entry.resource.respond_to?('onsetString')
-      index += 1
-      contents.merge! FhirDeathRecord::Consumer.cause_of_death_condition(entry, c-3)
+      next unless !entry.nil? && !entry.resource.nil? && entry.resource.text.present? && entry.resource.respond_to?('onsetString')
+      contents.merge! FhirDeathRecord::Consumer.cause_of_death_condition(entry, index)
+      index = index + 1
     end
 
     # Grab observations
-    (index..fhir_record.entry.count-1).each do |o|
+    (3..fhir_record.entry.count-1).each do |o|
       entry = fhir_record.entry[o]
       case entry&.resource&.code&.coding&.first&.code
       when '81956-5'
